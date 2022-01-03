@@ -1,10 +1,5 @@
-function userItem() {
-     const userData = {
-          login: "mojombo",
-          avatar_url: "http://avatars.githubusercontent.com/u/1?v=4",
-          html_url: "https://github.com/mojombo",
-     }
-     const { avatar_url, login, html_url } = userData;
+function UserItem(props) {
+     const { avatar_url, login, html_url } = props.user;
      return (
           <div className="card text-center">
                <img
@@ -19,4 +14,4 @@ function userItem() {
      );
 };
 
-export default userItem;
+export default UserItem;
