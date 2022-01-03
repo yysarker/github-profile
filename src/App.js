@@ -1,12 +1,17 @@
 import './App.css';
-
+import Navbar from "./components/layout/Navbar";
+import UserItem from './components/users/UserItem';
 function App() {
-  return (
-    <div className='App'>
-      <h1>Hello React Js.</h1>
-      <h3>Yeahyea Sarker.</h3>
-    </div>
-  );
+     const siteLogo = {
+          title: "Github Profile Finder",
+          icon: "fab fa-github"
+     }
+     return (
+          <div className='App '>
+               <Navbar logo={siteLogo}></Navbar>
+               <UserItem></UserItem>
+          </div>
+     );
 }
 
 export default App;
