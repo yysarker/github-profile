@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const UserItem = ({ user: { avatar_url, login, html_url } }) => {
      return (
           <div className="card text-center">
@@ -13,5 +15,8 @@ const UserItem = ({ user: { avatar_url, login, html_url } }) => {
      );
 };
 
+UserItem.propType = {
+     user: PropTypes.object.isRequired,
+}
 export default UserItem;
 
