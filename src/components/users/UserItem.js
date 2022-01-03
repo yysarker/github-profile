@@ -1,5 +1,4 @@
-function UserItem(props) {
-     const { avatar_url, login, html_url } = props.user;
+const UserItem = ({ user: { avatar_url, login, html_url } }) => {
      return (
           <div className="card text-center">
                <img
@@ -15,3 +14,4 @@ function UserItem(props) {
 };
 
 export default UserItem;
+

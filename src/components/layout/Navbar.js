@@ -1,8 +1,8 @@
-function Navbar(props) {
-     const { title, icon } = props.logo;
+const Navbar = ({ title, icon }) => {
+     // const { title, icon } = props.logo;
      return (
           <nav className="navbar bg-primary">
-               <h1> <i class={icon}></i> {title}</h1>
+               <h1> <i className={icon}></i> {title}</h1>
           </nav>
      );
 };
