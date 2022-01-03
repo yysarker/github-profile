@@ -27,8 +27,13 @@ function Users(props) {
                html_url: "https://github.com/wycats"
           }
      ];
+     const userStyle = {
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridGap: '1rem'
+     };
      return (
-          <div>
+          <div style={userStyle}>
                {users.map(user => (
                     <UserItem key={user.id} user={user}></UserItem>
                ))}

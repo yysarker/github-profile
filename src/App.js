@@ -9,7 +9,9 @@ function App() {
      return (
           <div className='App '>
                <Navbar logo={siteLogo}></Navbar>
-               <Users></Users>
+               <div className="container">
+                    <Users></Users>
+               </div>
           </div>
      );
 }
