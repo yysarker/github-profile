@@ -1,7 +1,9 @@
 import UserItem from "./UserItem"
 import React, { useState, useEffect } from 'react'
+import Spinner from "../layout/Spinner";
+import axios from "axios";
 
-function Users() {
+const Users = () => {
      const userStyle = {
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
@@ -10,24 +12,37 @@ function Users() {
 
      //Get the API data 
      const [users, setUsers] = useState([]);
+     const [loading, setLoading] = useState(true);
 
+
+     const userData = async () => {
+          try {
+               const result = await axios //have a issue
+                    .get('https://api.github.com/users')
+                    .then(res => {
+                         setUsers(res.data)
+                    })
+               setLoading(false)
+          } catch (error) {
+               console.log(error);
+          }
+     }
      useEffect(() => {
-          fetch('https://api.github.com/users')
-               .then(response => response.json())
-               .then(data => {
-                    setUsers(data);
-                    // console.log(data);
-               })
-               .catch(error => console.log(error))
-     }, [])
+          userData();
+     }, []);
 
-     return (
-          <div style={userStyle}>
-               {users.map(user => (
-                    <UserItem key={user.id} user={user}></UserItem>
-               ))}
-          </div>
-     );
+     if (loading) {
+          return <Spinner />
+     } else {
+          return (
+               <div style={userStyle}>
+                    {users.map(user => (
+                         <UserItem key={user.id} user={user}></UserItem>
+                    ))}
+               </div>
+          );
+     }
+
 
 }
 

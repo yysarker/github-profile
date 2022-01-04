@@ -10,7 +10,7 @@ const UserItem = ({ user: { avatar_url, login, html_url } }) => {
                     className="round-img"
                />
                <h3>{login}</h3>
-               <a href={html_url} className="btn btn-dark btn-sm my-1">More </a>
+               <a href={html_url} className="btn btn-danger btn-sm my-1">More </a>
           </div>
      );
 };
