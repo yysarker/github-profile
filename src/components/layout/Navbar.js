@@ -1,4 +1,4 @@
-const Navbar = ({ title, icon }) => {
+const Navbar = ({ logo: { title, icon} }) => {
      // const { title, icon } = props.logo;
      return (
           <nav className="navbar bg-primary">
