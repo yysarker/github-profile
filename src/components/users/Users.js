@@ -1,37 +1,26 @@
-import UserItem from "./UserItem";
+import UserItem from "./UserItem"
+import React, { useState, useEffect } from 'react'
 
-function Users(props) {
-     const users = [
-          {
-               id: "1",
-               login: "mojombo",
-               avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
-               html_url: "https://github.com/mojombo"
-          },
-          {
-               id: "2",
-               login: "defunkt",
-               avatar_url: "https://avatars.githubusercontent.com/u/2?v=4",
-               html_url: "https://github.com/defunkt"
-          },
-          {
-               id: "3",
-               login: "pjhyett",
-               avatar_url: "https://avatars.githubusercontent.com/u/3?v=4",
-               html_url: "https://github.com/pjhyett"
-          },
-          {
-               id: "4",
-               login: "wycats",
-               avatar_url: "https://avatars.githubusercontent.com/u/4?v=4",
-               html_url: "https://github.com/wycats"
-          }
-     ];
+function Users() {
      const userStyle = {
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gridGap: '1rem'
      };
+
+     //Get the API data 
+     const [users, setUsers] = useState([]);
+
+     useEffect(() => {
+          fetch('https://api.github.com/users')
+               .then(response => response.json())
+               .then(data => {
+                    setUsers(data);
+                    // console.log(data);
+               })
+               .catch(error => console.log(error))
+     }, [])
+
      return (
           <div style={userStyle}>
                {users.map(user => (
@@ -39,6 +28,7 @@ function Users(props) {
                ))}
           </div>
      );
+
 }
 
 export default Users;
